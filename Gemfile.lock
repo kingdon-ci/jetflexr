@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    excon (0.92.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  excon
+
+RUBY VERSION
+   ruby 2.7.6p219
+
+BUNDLED WITH
+   2.1.4

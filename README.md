@@ -1,0 +1,3 @@
+# JetFLEXr
+
+CoinFLEX API Client
