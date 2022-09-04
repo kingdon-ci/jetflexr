@@ -3,7 +3,8 @@ module Coinflex
     def list
       # GET /v3/AMM
       #binding.pry
-      fail
+
+      []
     end
   end
 end
