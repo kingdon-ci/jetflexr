@@ -1,4 +1,7 @@
 #gem "shellwords"
+
+gem 'activesupport'
+
 # gem "cf-ruby-libecp"
 # gem "cf-trade-client"
 
