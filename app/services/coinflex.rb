@@ -1,15 +1,17 @@
 require 'pry'
 
 module Coinflex
-  LIVE_API = "https://v2api.coinflex.com"
-  STAGING_API = "https://v2stgapi.coinflex.com"
+  # LIVE_API = "https://v2api.coinflex.com"
+  # STAGING_API = "https://v2stgapi.coinflex.com"
 
   def report
-    api = Coinflex::RestV2.new
-    api.ping
+    api = Coinflex::RestV2.new(staging: true)
 
-    binding.pry
+    if api.ping
+      binding.pry
+    end
   end
+
   module_function :report
 end
 

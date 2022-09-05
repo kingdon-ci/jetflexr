@@ -1,9 +1,18 @@
+require './app/services/coinflex/abstract_rest'
 module Coinflex
 
-  class RestV3
+  class RestV3 < AbstractRest
 
     LIVE_API = "https://v2api.coinflex.com"
     STAGING_API = "https://v2stgapi.coinflex.com"
+
+    def initialize(staging: )
+      if staging
+        @base = STAGING_API
+      else
+        @base = LIVE_API
+      end
+    end
 
     def get_main_account
       # GET /v3/account
