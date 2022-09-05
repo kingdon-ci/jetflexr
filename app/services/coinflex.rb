@@ -4,11 +4,14 @@ module Coinflex
   LIVE_API = "https://v2api.coinflex.com"
   STAGING_API = "https://v2stgapi.coinflex.com"
 
-  module_function :report
   def report
     binding.pry
   end
+  module_function :report
 end
+
+require './app/services/coinflex/rest_v2.rb'
+require './app/services/coinflex/rest_v3.rb'
 
 require './app/services/coinflex/amms'
 require './app/services/coinflex/deliveries'
