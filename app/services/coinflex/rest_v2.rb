@@ -1,4 +1,6 @@
+require 'uri'
 require './app/services/coinflex/abstract_rest'
+
 module Coinflex
 
   class RestV2 < AbstractRest
@@ -14,9 +16,13 @@ module Coinflex
       end
     end
 
+    def hostname
+      URI.parse(base).hostname
+    end
+
     def get_accountinfo
       # GET /v2/accountinfo
-      response = Excon.get(base + '/v2/accountinfo')
+      response = request('GET', hostname, '/v2/accountinfo', nil, priv: true)
       j = nil
       if response.status == 200
         binding.pry
@@ -28,7 +34,7 @@ module Coinflex
 
     def get_balances
       # GET /v2/balances (/?instrumentId)
-      response = Excon.get(base + '/v2/balances')
+      response = request('GET', hostname, '/v2/balances', nil, priv: true)
       j = nil
       if response.status == 200
         binding.pry
@@ -49,7 +55,7 @@ module Coinflex
 
     def get_delivery_orders
       # GET /v2.1/delivery/orders (...)
-      response = Excon.get(base + '/v2.1/delivery/orders')
+      response = request('GET', hostname, '/v2/delivery/orders', nil, priv: true)
       j = nil
       if response.status == 200
         binding.pry
@@ -65,7 +71,7 @@ module Coinflex
 
     def get_amms
       # GET /v2/AMM
-      response = Excon.get(base + '/v2/AMM')
+      response = request('GET', hostname, '/v2/AMM', nil, priv: true)
       j = nil
       if response.status == 200
         binding.pry
@@ -77,7 +83,7 @@ module Coinflex
 
     def ping
       # GET /v2/ping
-      response = Excon.get(base + '/v2/ping')
+      response = request('GET', hostname, '/v2/ping', nil)
       j = nil
       if response.status == 200
         j = JSON.parse(response.body)

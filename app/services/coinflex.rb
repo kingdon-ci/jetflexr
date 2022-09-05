@@ -8,7 +8,7 @@ module Coinflex
     api = Coinflex::RestV2.new(staging: true)
 
     if api.ping
-      binding.pry
+      api.get_amms
     end
   end
 
