@@ -35,6 +35,7 @@ module Coinflex
     end
 
     def ping
+      binding.pry
       # GET /v2/ping
     end
   end

@@ -5,6 +5,9 @@ module Coinflex
   STAGING_API = "https://v2stgapi.coinflex.com"
 
   def report
+    api = Coinflex::RestV2.new
+    api.ping
+
     binding.pry
   end
   module_function :report
