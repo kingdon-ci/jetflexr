@@ -14,3 +14,8 @@ jobs:
         bundler-cache: true
 
     - run: bundle exec rake
+      env:
+        SG1_API_TESTER_KEY: ${{ secrets.SG1_API_TESTER_KEY }}
+        SG1_API_TESTER_SECRET: ${{ secrets.SG1_API_TESTER_SECRET }}
+        SG1_API_TESTER_ADDRESS: ${{ secrets.SG1_API_TESTER_ADDRESS }}
+        CF_API_ENV: staging

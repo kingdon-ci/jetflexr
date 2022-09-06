@@ -5,14 +5,21 @@ module Coinflex
   # STAGING_API = "https://v2stgapi.coinflex.com"
 
   def report
-    cf6_api = Coinflex::RestV2.new(staging: false, slug: 'CF6')
-    cf7_api = Coinflex::RestV2.new(staging: false, slug: 'CF7')
+    # cf6_api = Coinflex::RestV2.new(staging: false, slug: 'CF6')
+    # cf7_api = Coinflex::RestV2.new(staging: false, slug: 'CF7')
 
-    if cf6_api.ping
-      amms = cf6_api.get_amms
-    end
-    if cf7_api.ping
-      amms2 = cf7_api.get_amms
+    # if cf6_api.ping
+    #   amms = cf6_api.get_amms
+    # end
+    # if cf7_api.ping
+    #   amms2 = cf7_api.get_amms
+    # end
+
+    st = true if ENV['CF_API_ENV'] == "staging"
+    api = Coinflex::RestV2.new(staging: st, slug: 'SG1')
+
+    if api.ping
+      amms = api.get_amms
     end
   end
 
