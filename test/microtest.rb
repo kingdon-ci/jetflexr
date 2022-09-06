@@ -7,4 +7,9 @@ require './app/services/coinflex/amms'
 
 amm = Coinflex::AMMs.new
 
-amm.list
+
+# amm.list
+
+require './app/services/coinflex'
+
+Coinflex.report
