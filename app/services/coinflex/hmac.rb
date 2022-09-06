@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load '.env.local'
+
 module Coinflex
   module HMAC
     def signature(secret_key, access_key, timestamp, nonce, verb, path, method, body)
@@ -17,11 +20,12 @@ module Coinflex
         path + "\n" + method + "\n" + b
     end
 
-    def header(nonce, verb, path, method, body)
-      access_key = api_key(staging: true)
+    def header(nonce, verb, path, method, body, staging, api_key_slug)
+      access_key = api_key(staging: staging, slug: api_key_slug)
       t = timestamp
       signature = signature(
-        api_secret(staging: true), access_key, t, nonce,
+        api_secret(staging: staging, slug: api_key_slug),
+        access_key, t, nonce,
         verb, path, method, body)
 
       {

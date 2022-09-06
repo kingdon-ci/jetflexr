@@ -21,11 +21,12 @@ module Coinflex
     #   end
     # end
 
-    def request(verb, path, method, body, priv:false)
+    def request(verb, path, method, body, priv:false, staging:false, slug:)
       if verb == "GET" && !priv
         Excon.get(base + method)
       elsif verb == "GET" && priv
-        head = header(nonce, verb, path, method, body)
+        head = header(nonce, verb, path, method, body,
+                      staging, slug)
         Excon.get(base + method, headers: head)
       end
     end

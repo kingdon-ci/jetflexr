@@ -11,6 +11,7 @@ gem "awesome_print", require: 'ap'
 gem "debug", ">= 1.0.0"
 gem "rake"
 gem "json"
+gem "dotenv"
 
 ruby '2.7.6'
 

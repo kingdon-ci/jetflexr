@@ -5,10 +5,14 @@ module Coinflex
   # STAGING_API = "https://v2stgapi.coinflex.com"
 
   def report
-    api = Coinflex::RestV2.new(staging: true)
+    cf6_api = Coinflex::RestV2.new(staging: false, slug: 'CF6')
+    cf7_api = Coinflex::RestV2.new(staging: false, slug: 'CF7')
 
-    if api.ping
-      api.get_amms
+    if cf6_api.ping
+      amms = cf6_api.get_amms
+    end
+    if cf7_api.ping
+      amms2 = cf7_api.get_amms
     end
   end
 
